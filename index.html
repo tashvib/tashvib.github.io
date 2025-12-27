@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Tashvi Bansal — Portfolio</title>
+    <!-- serif heading + readable body font -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-YDK9HN28MH"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);} 
+      gtag('js', new Date());
+
+      gtag('config', 'G-YDK9HN28MH');
+    </script>
+  </head>
+  <body>
+    <!-- left vertical nav (simple icons) -->
+    <aside class="left-nav" aria-hidden="false">
+      <nav>
+        <a class="nav-btn" href="#about" title="About"><img src="res/house.png" alt="About"></a>
+        <a class="nav-btn" href="#projects" title="Projects">💼</a>
+        <a class="nav-btn" href="#apps" title="Apps">📱</a>
+        <a class="nav-btn" href="#research" title="Research">📄</a>
+        <a class="nav-btn" href="#company" title="Company">🏢</a>
+      </nav>
+    </aside>
+
+    <main class="container centered">
+      <header class="hero">
+        <p class="lead">
+        </p>
+      </header>
+      <section id="about" class="card">
+        <h1></h1>
+        <h2></h2>
+        <p>
+          Hi, I’m Tashvi Bansal (Cupertino, CA), a Monta Vista High School senior who loves building and teaching with code. I coach students in Python at theCoderSchool, work with the Monta Vista Robotics Team, and volunteer at Sunnyview Retirement Residence. I’m also the CEO of SHELEAPS IN TECH INC, a 501(c)(3) nonprofit dedicated to dismantling barriers in tech education by providing girls and other underresourced students with high-quality learning experiences and low-cost tools they can use anywhere.
+        </p>
+        <p>Contact: <a href="mailto:tashvi.bansal@gmail.com">tashvi.bansal@gmail.com</a></p>
+      </section>
+
+      <section id="projects" class="card">
+        <h2>Projects</h2>
+        <div class="projects-grid">
+          <a class="project" href="https://github.com/tashvib/MurderOnEnchantedIsland" target="_blank" rel="noopener noreferrer">
+            <img src="assets/MurderOnEnchatedIslandHomePage.jpg" alt="Murder On Enchanted Island thumbnail">
+            <div class="proj-meta">
+              <strong>Murder On Enchanted Island</strong>
+            </div>
+          </a>
+
+          <a class="project" href="https://github.com/tashvib/GreenOvationCode_" target="_blank" rel="noopener noreferrer">
+            <img src="assets/GreenovationLendingPage.jpg" alt="GreenOvation thumbnail">
+            <div class="proj-meta">
+              <strong>GreenOvation</strong>
+            </div>
+          </a>
+        </div>
+      </section>
+
+      <section id="apps" class="card">
+        <h2>My Apps</h2>
+        <p>
+          Learn proper waste disposal through Al-powered recognition. Perfect for communities learning waste management basics and environmental education.
+        </p>
+        <div class="projects-grid">
+          <a class="project" href="https://apps.apple.com/us/app/greenovation/id6751117864" target="_blank" rel="noopener noreferrer">
+            <img src="assets/GreenovationLendingPage.jpg" alt="GreenOvation app thumbnail">
+            <div class="proj-meta">
+              <strong>GreenOvation (App Store)</strong>
+              <div><a href="https://apps.apple.com/us/app/greenovation/id6751117864" target="_blank" rel="noopener noreferrer">View on the App Store</a></div>
+            </div>
+          </a>
+        </div>
+      </section>
+
+      <section id="research" class="card">
+        <h2>Research</h2>
+        <p>
+          Research: Co-author of “Follow My Lead: Logical Fallacy Classification with Knowledge-Augmented LLMs” (arXiv, 2025), exploring stepwise/knowledge-augmented methods to improve logical fallacy classification in LLMs. 2510.09970v1
+        </p>
+        <p><a href="https://arxiv.org/pdf/2510.09970" target="_blank" rel="noopener noreferrer">Read the paper (arXiv)</a></p>
+      </section>
+
+      <section id="company" class="card">
+        <h2>Company</h2>
+        <p>
+          SHELEAPS IN TECH INC, a 501(c)(3) nonprofit, dismantles barriers in tech education by providing girls and other underresourced students with high-quality learning experiences and low-cost tools they can use anywhere.
+        </p>
+        <p><a href="https://sheleapsintech.com" target="_blank" rel="noopener noreferrer">sheleapsintech.com</a></p>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <p>© <span id="year"></span> Tashvi Bansal — Built with ❤️</p>
+      </div>
+    </footer>
+
+    <script>
+      document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+  </body>
+</html>
