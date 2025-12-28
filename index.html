@@ -22,9 +22,15 @@
     <aside class="left-nav" aria-hidden="false">
       <nav>
         <a class="nav-btn" href="#about" title="About"><img src="res/house.png" alt="About"></a>
-        <a class="nav-btn" href="#projects" title="Projects">💼</a>
-        <a class="nav-btn" href="#research" title="Research">📄</a>
-        <a class="nav-btn" href="#company" title="Company">🏢</a>
+        <a class="nav-btn" href="#projects" title="Projects" aria-label="Projects">
+          <img src="assets/chart-no-axes-gantt.png" alt="Projects">
+        </a>
+        <a class="nav-btn" href="#research" title="Research" aria-label="Research">
+          <img src="assets/notebook-text.png" alt="Research">
+        </a>
+        <a class="nav-btn" href="#community" title="Community" aria-label="Community">
+          <img src="assets/earth.png" alt="Community">
+        </a>
       </nav>
     </aside>
 
@@ -143,17 +149,115 @@
         });
       </script>
 
+      <script>
+        // Research list — 3 cards (first item expanded with details and conferences)
+        const research = [
+          {
+            title: "Follow My Lead: Logical Fallacy Classification with Knowledge-Augmented LLMs",
+            venue: "arXiv (2025)",
+            summary: "Co-author exploring stepwise and knowledge-augmented methods to improve logical fallacy classification in LLMs.",
+            pdf: "https://arxiv.org/pdf/2510.09970",
+            image: "assets/notebook-text.png",
+            points: [
+              "Co-authored AI reasoning paper",
+              "Created the first \"chain of decision\" method making model decisions verifiable, enhancing interpretability.",
+              "Developed novel neurosymbolic AI method to improve LLM logical reasoning by 20.7% accuracy without expensive model training.",
+              "Learned logic programming in Prolog, AWS (Bedrock, S3), RAG, and prompt engineering."
+            ],
+            conferences: [
+              { name: "Advances in Cognitive Systems at Georgia Tech", url: "http://cogsys.org/conference/2025/schedule.html" },
+              { name: "BayLearn Machine Learning Symposium", url: "https://baylearn-org.github.io/www/submissions.html" }
+            ]
+          },
+          {
+            title: "Efficient Few-Shot Reasoning",
+            venue: "Workshop (2024)",
+            summary: "Study on reducing prompt costs while maintaining reasoning quality across datasets.",
+            pdf: "#",
+            image: "assets/notebook-text.png"
+          },
+          {
+            title: "Knowledge-Augmented Retrieval for QA",
+            venue: "Poster (2023)",
+            summary: "Improving answer accuracy by augmenting retrieval with constrained knowledge sources.",
+            pdf: "#",
+            image: "assets/notebook-text.png"
+          }
+        ];
+
+        function createResearchCard(r){
+          const container = document.getElementById('research-list');
+          const card = document.createElement('article');
+          card.className = 'research-card';
+          card.innerHTML = `
+            <div class="research-content">
+              <h3>${r.title}</h3>
+              <div class="research-meta">${r.venue}</div>
+              <div class="research-links"></div>
+            </div>
+          `;
+
+          // bullet points (if present)
+          if(r.points && r.points.length){
+            const ul = document.createElement('ul');
+            ul.className = 'research-points';
+            r.points.forEach(pt => {
+              const li = document.createElement('li');
+              li.textContent = pt;
+              ul.appendChild(li);
+            });
+            card.querySelector('.research-content').appendChild(ul);
+          }
+
+          // conferences block (if present)
+          if(r.conferences && r.conferences.length){
+            const conf = document.createElement('div');
+            conf.className = 'research-conferences';
+            const title = document.createElement('div');
+            title.className = 'research-conf-title';
+            title.textContent = 'Conferences:';
+            conf.appendChild(title);
+            const list = document.createElement('ul');
+            r.conferences.forEach(c => {
+              const li = document.createElement('li');
+              const a = document.createElement('a');
+              a.href = c.url;
+              a.target = '_blank';
+              a.rel = 'noopener noreferrer';
+              a.textContent = c.name;
+              li.appendChild(a);
+              list.appendChild(li);
+            });
+            conf.appendChild(list);
+            card.querySelector('.research-content').appendChild(conf);
+          }
+
+          const links = card.querySelector('.research-links');
+          if(r.pdf){
+            const a = document.createElement('a');
+            a.className = 'link-btn';
+            a.textContent = 'Read Paper';
+            a.href = r.pdf;
+            a.target = '_blank';
+            a.rel = 'noopener noreferrer';
+            links.appendChild(a);
+          }
+
+          container.appendChild(card);
+        }
+
+        document.addEventListener('DOMContentLoaded', ()=>{
+          research.forEach(createResearchCard);
+        });
+      </script>
 
       <section id="research" class="card section">
         <h2>Research</h2>
-        <p>
-          Research: Co-author of “Follow My Lead: Logical Fallacy Classification with Knowledge-Augmented LLMs” (arXiv, 2025), exploring stepwise/knowledge-augmented methods to improve logical fallacy classification in LLMs. 2510.09970v1
-        </p>
-        <p><a href="https://arxiv.org/pdf/2510.09970" target="_blank" rel="noopener noreferrer">Read the paper (arXiv)</a></p>
+        <div id="research-list" class="research-grid"></div>
       </section>
 
-      <section id="company" class="card section">
-        <h2>Company</h2>
+      <section id="community" class="card section">
+        <h2>Community</h2>
         <p>
           SHELEAPS IN TECH INC, a 501(c)(3) nonprofit, dismantles barriers in tech education by providing girls and other underresourced students with high-quality learning experiences and low-cost tools they can use anywhere.
         </p>
@@ -215,30 +319,79 @@
       })();
     </script>
 
-    <!-- Section toggle script -->
+    <!-- Section toggle script + sliding nav indicator -->
     <script>
       (function(){
-        const navBtns = document.querySelectorAll('.left-nav .nav-btn');
+        const nav = document.querySelector('.left-nav nav');
+        const navBtns = Array.from(document.querySelectorAll('.left-nav .nav-btn'));
         const sections = document.querySelectorAll('.section');
+        let selectedIndex = 0;
+
+        // create indicator element and append to nav
+        const indicator = document.createElement('span');
+        indicator.className = 'nav-indicator';
+        nav.appendChild(indicator);
+
+        function positionIndicator(index){
+          const btn = navBtns[index];
+          if(!btn) return;
+          // measure button and compute offset relative to nav
+          const btnRect = btn.getBoundingClientRect();
+          const navRect = nav.getBoundingClientRect();
+
+          // padding for the indicator so it "hugs" the button
+          const PAD = 10;
+          const width = Math.round(btnRect.width + PAD * 2);
+          const height = Math.round(btnRect.height + PAD * 2);
+
+          // compute left so the indicator centers horizontally on the button
+          const left = Math.round((btnRect.left - navRect.left) + (btnRect.width - width) / 2);
+
+          // compute translateY so the indicator centers vertically on the button
+          const topOffset = Math.round((btnRect.top - navRect.top) - ( (height - btnRect.height) / 2 ));
+
+          // apply sizing and position
+          indicator.style.width = width + 'px';
+          indicator.style.height = height + 'px';
+          indicator.style.left = left + 'px';
+          indicator.style.transform = `translateY(${topOffset}px)`;
+
+          // update active class on buttons
+          navBtns.forEach((b,i)=> b.classList.toggle('active', i===index));
+        }
+
         function showSection(id){
           sections.forEach(s => {
             if(s.id === id) s.classList.add('active'); else s.classList.remove('active');
           });
-          navBtns.forEach(btn => {
-            const href = btn.getAttribute('href') || btn.querySelector('a')?.getAttribute('href');
-            if(href && href.slice(1) === id) btn.classList.add('active'); else btn.classList.remove('active');
-          });
+          // mark selected index by matching href
+          const matchIndex = navBtns.findIndex(b => (b.getAttribute('href')||'').slice(1) === id);
+          if(matchIndex >= 0){ selectedIndex = matchIndex; positionIndicator(selectedIndex); }
         }
+
+        // Attach handlers and initialize
         document.addEventListener('DOMContentLoaded', function(){
           // show about by default
           showSection('about');
-          navBtns.forEach(btn => {
+
+          navBtns.forEach((btn, idx) => {
             btn.addEventListener('click', function(e){
               e.preventDefault();
-              const target = this.getAttribute('href')?.slice(1);
-              if(target) showSection(target);
+              const targetId = (this.getAttribute('href')||'').slice(1);
+              if(targetId) showSection(targetId);
+            });
+
+            // keyboard support
+            btn.addEventListener('keydown', function(e){
+              if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); this.click(); }
             });
           });
+
+          // initial position after layout
+          setTimeout(()=> positionIndicator(selectedIndex), 50);
+
+          // reposition on resize to keep in sync
+          window.addEventListener('resize', ()=> positionIndicator(selectedIndex));
         });
       })();
     </script>

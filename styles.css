@@ -10,7 +10,14 @@ body{font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica
 
 /* left vertical nav */
 .left-nav{position:fixed; left:28px; top:50%; transform:translateY(-50%);}
-.left-nav nav{display:flex; flex-direction:column; gap:14px}
+.left-nav nav{display:flex; flex-direction:column; gap:14px; position:relative; padding:8px 8px}
+/* moving indicator sits inside the nav behind icons */
+.nav-indicator{position:absolute; left:12px; top:0; transform:translateY(0); transition:transform 320ms cubic-bezier(.22,.9,.34,1), left 320ms cubic-bezier(.22,.9,.34,1), width 240ms ease, height 240ms ease; width:56px; height:56px; border-radius:20px; background:rgba(255,255,255,0.96); border:1px solid rgba(0,0,0,0.04); box-shadow:0 10px 20px rgba(16,20,24,0.06); z-index:0; pointer-events:none; will-change:transform,left,width,height}
+.nav-btn{position:relative; z-index:2; display:inline-flex; align-items:center; justify-content:center; width:56px; height:56px; border-radius:14px}
+.nav-btn img{display:block}
+/* active icon contrast */
+.nav-btn.active{color:var(--accent)}
+.nav-btn.active img{filter:grayscale(0) brightness(0) invert(0)}
 .nav-btn{display:inline-flex; align-items:center; justify-content:center; width:56px; height:56px; border-radius:14px; background:rgba(0,0,0,0.04); color:var(--text); text-decoration:none; font-size:20px}
 .nav-btn:hover{background:rgba(0,0,0,0.06)}
 
@@ -56,6 +63,32 @@ h2{margin:6px 0 12px; font-size:20px}
 .project-title{margin:0 0 8px; font-size:20px}
 .project-description{margin:0 0 12px; color:var(--muted)}
 .project-links{display:flex; gap:10px}
+
+/* research grid */
+.research-grid{display:flex; flex-direction:column; gap:18px; margin-top:12px}
+.research-card{background:white; border-radius:12px; padding:18px; box-shadow:0 8px 20px rgba(29,30,30,0.06); width:100%}
+.research-content{display:block}
+@media (min-width:720px){
+  .research-card{padding:20px}
+}
+@media (max-width:720px){
+  .research-card{padding:16px}
+}
+.research-card .research-image{width:64px;height:64px;flex:0 0 64px;border-radius:8px;overflow:hidden;background:rgba(0,0,0,0.03);display:flex;align-items:center;justify-content:center}
+.research-card .research-image img{width:48px;height:48px;object-fit:contain}
+.research-content h3{margin:0;font-size:16px}
+.research-meta{font-size:13px;color:var(--muted);margin-bottom:6px}
+.research-summary{font-size:14px;color:var(--muted);margin:0 0 8px}
+.research-links{display:flex;gap:8px}
+
+/* research details */
+.research-points{margin:10px 0 0; padding-left:18px; color:var(--muted)}
+.research-points li{margin-bottom:6px}
+.research-conferences{margin-top:10px}
+.research-conf-title{font-weight:600; font-size:13px; margin-bottom:6px}
+.research-conferences ul{padding-left:18px; margin:0}
+.research-conferences li{margin-bottom:6px}
+
 .link-btn{display:inline-flex; align-items:center; gap:8px; padding:8px 12px; border-radius:8px; border:none; cursor:pointer; background:rgba(0,0,0,0.04); color:var(--text)}
 .link-btn svg{display:block}
 .link-btn img.store-icon{width:20px; height:20px; display:block}
