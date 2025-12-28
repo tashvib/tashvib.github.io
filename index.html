@@ -41,10 +41,10 @@
       </header>
       <section id="about" class="card about-hero section">
         <div class="about-inner">
-          <div class="profile placeholder" aria-hidden="true"></div>
           <div class="intro">
             <h1 class="greeting">Hi, I'm <strong>Tashvi</strong></h1>
             <div class="typing"><span id="typed-text">Monta Vista Student</span><span class="cursor">_</span></div>
+            <p class="about-me">Hi, I'm Tashvi, a senior at Monta Vista High School. I'm interested in making AI systems more reliable and understandable. I work on combining symbolic reasoning with neural networks to help AI make better decisions and explain how it got there.</p>
           </div>
         </div>
       </section>
@@ -69,8 +69,12 @@
             image: "assets/GreenovationLendingPage.jpg",
             github: "https://github.com/tashvib/GreenOvationCode_",
             appStore: "https://apps.apple.com/us/app/greenovation/id6751117864",
-            devpost: "https://devpost.com/software/greenovation-h7d4v8"
-          }
+            devpost: "https://devpost.com/software/greenovation-h7d4v8"          },
+          {
+            name: "Mitra",
+            description: "low-cost Raspberry Pi based tutoring device bringing offline education",
+            image: "assets/low-cost Raspberry Pi.png",
+            website: "https://sheleapsintech.com"          }
         ];
 
         function svgGitHub(){
@@ -84,6 +88,14 @@
           return `<!-- Apple -->
             <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
               <path d="M16.365 1.43c-.7.82-1.66 1.66-2.8 1.46-.36-.07-.69-.23-1.05-.35-1.02-.36-2.15 0-2.85.85-.64.78-.66 1.9-.1 2.83.45.73 1.45 1.19 2.36 1.07.54-.07 1.06-.28 1.56-.45.36-.12.69-.1 1.03.03.5.19.95.54 1.45.77.56.27 1.18.31 1.76.1.55-.2 1.04-.6 1.49-.97 1.1-1.01 1.89-2.38 1.93-3.99.03-1.1-.47-2.1-1.15-2.83-.6-.64-1.39-1.06-2.29-1.21-.56-.1-1.13-.07-1.69.06zM17.5 15.5c-.7.35-1.48.53-2.28.5-1.01-.03-1.98-.31-2.88-.78-.72-.36-1.3-.88-1.93-1.44-.8-.76-1.76-1.63-2.58-2.5-.5-.52-.98-1.06-1.4-1.66-.21-.3-.38-.63-.56-.96-.49-.93-.88-1.92-.97-2.95C2.5 3.63 3.46 3 4.5 3c.27 0 .54.02.79.06.21.04.42.11.61.21.08.04.16.08.24.12.68.38 1.27.94 1.66 1.65.66 1.2 1.1 2.5 1.6 3.77.38.94.77 1.87 1.34 2.72.44.65.98 1.23 1.66 1.66.58.36 1.3.47 1.98.32.72-.16 1.39-.49 2.02-.86.6-.35 1.16-.7 1.68-1.11.35-.28.68-.59.98-.93.28-.32.54-.66.78-1.02.08-.12.14-.2.2-.29.16-.25.28-.5.4-.78.2-.57.28-1.15.2-1.73-.08-.6-.32-1.16-.67-1.65-.6-.98-1.6-1.69-2.64-2.05-.68-.24-1.4-.29-2.05-.09-.42.12-.79.36-1.12.6-.19.15-.35.32-.5.49-.4.43-.85.8-1.35 1.08-1.1.62-2.36.62-3.54.02-.7-.38-1.3-.95-1.8-1.61C3 6.37 2 7.28 1.57 8.48c-.4 1.13-.4 2.29 0 3.43.4 1.13 1.18 2.14 2.2 2.77.96.58 2.06.76 3.12.5 1.23-.29 2.37-.95 3.32-1.84.36-.36.69-.76.98-1.18.28-.4.52-.82.77-1.23.25-.42.56-.77.98-1.06.44-.3.96-.44 1.49-.4.71.06 1.37.41 1.86.96.52.58.86 1.3.99 2.06.07.44.05.89-.05 1.32-.06.28-.15.57-.3.82-.16.27-.35.52-.57.75-.23.24-.5.45-.79.62z"/>
+            </svg>`;
+        }
+
+        function svgGlobe(){
+          return `<!-- Globe -->
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.2" fill="currentColor" />
+              <path d="M3 12h18" stroke="rgba(255,255,255,0.6)" stroke-width="1" stroke-linecap="round" />
             </svg>`;
         }
 
@@ -137,6 +149,15 @@
             btn.title = `${p.name} — Devpost`;
             btn.textContent = 'Devpost';
             btn.addEventListener('click', ()=>window.open(p.devpost,'_blank'));
+            links.appendChild(btn);
+          }
+
+          if(p.website || p.url){
+            const btn = document.createElement('button');
+            btn.className = 'link-btn web-btn';
+            btn.title = `${p.name} — Website`;
+            btn.innerHTML = svgGlobe();
+            btn.addEventListener('click', ()=>window.open(p.website || p.url,'_blank'));
             links.appendChild(btn);
           }
 
@@ -280,18 +301,75 @@
         <div id="research-list" class="research-grid"></div>
       </section>
 
+      <script>
+        // Community list — 3 cards
+        const community = [
+          {
+            title: "Code Coach at theCoderSchool",
+            points: [
+              "Led 2 <strong>in-person</strong> summer <strong>coding camps</strong>; entrusted by Manager with operation of space and safety of 25 students.",
+              "Designed CodingBat curriculum; helped students break down problems, trace code, and explained abstract algorithms to varying levels of learners."
+            ]
+          },
+          {
+            title: "Tutor",
+            points: [
+              "Tutored 19 learners across Azerbaijan, Egypt, Ghana, India, and Pakistan through Schoolhouse.world",
+              "Led AI education session for students at Vivekanand High School"
+            ]
+          }
+        ];
+
+        function createCommunityCard(c){
+          const container = document.getElementById('community-list');
+          const card = document.createElement('article');
+          card.className = 'community-card';
+          card.innerHTML = `
+            <div class="community-content">
+              <h3>${c.title}</h3>
+              <div class="community-links"></div>
+            </div>
+          `;
+
+          // bullet points (allow simple HTML like <strong>)
+          if(c.points && c.points.length){
+            const ul = document.createElement('ul');
+            ul.className = 'community-points';
+            c.points.forEach(pt => {
+              const li = document.createElement('li');
+              li.innerHTML = pt; // trusted user content
+              ul.appendChild(li);
+            });
+            card.querySelector('.community-content').appendChild(ul);
+          }
+
+          if(c.url){
+            const a = document.createElement('a');
+            a.className = 'link-btn';
+            a.textContent = 'Visit';
+            a.href = c.url;
+            a.target = '_blank';
+            a.rel = 'noopener noreferrer';
+            card.querySelector('.community-links').appendChild(a);
+          }
+
+          container.appendChild(card);
+        }
+
+        document.addEventListener('DOMContentLoaded', ()=>{
+          community.forEach(createCommunityCard);
+        });
+      </script>
+
       <section id="community" class="card section">
         <h2>Community</h2>
-        <p>
-          SHELEAPS IN TECH INC, a 501(c)(3) nonprofit, dismantles barriers in tech education by providing girls and other underresourced students with high-quality learning experiences and low-cost tools they can use anywhere.
-        </p>
-        <p><a href="https://sheleapsintech.com" target="_blank" rel="noopener noreferrer">sheleapsintech.com</a></p>
+        <div id="community-list" class="community-grid"></div>
       </section>
     </main>
 
     <footer class="site-footer">
       <div class="container">
-        <p>© <span id="year"></span> Tashvi Bansal — Built with ❤️</p>
+        <p>© <span id="year"></span> Tashvi Bansal</p>
       </div>
     </footer>
 
@@ -302,7 +380,7 @@
     <!-- Typewriter rotating text for About section -->
     <script>
       (function(){
-        const phrases = ["Monta Vista Student","Developer","Researcher"];
+        const phrases = ["Student","Developer","Researcher"];
         const typed = document.getElementById('typed-text');
         const TYPING_SPEED = 150; // ms per character
         const DELETING_SPEED = 75; // ms per character
