@@ -65,7 +65,7 @@
           },
           {
             name: "GreenOvation",
-            description: "Waste-sorting app that teaches proper waste disposal.",
+            description: "An app that gamifies waste disposal and sustainbility education",
             image: "assets/GreenovationLendingPage.jpg",
             github: "https://github.com/tashvib/GreenOvationCode_",
             appStore: "https://apps.apple.com/us/app/greenovation/id6751117864",
@@ -170,18 +170,26 @@
             ]
           },
           {
-            title: "Efficient Few-Shot Reasoning",
-            venue: "Workshop (2024)",
-            summary: "Study on reducing prompt costs while maintaining reasoning quality across datasets.",
-            pdf: "#",
-            image: "assets/notebook-text.png"
+            title: "Analyzing Media Narratives with Machine Learning: Topic Alignment and Sentiment in Trump’s Rally Speeches and News Media Coverage",
+            venue: "Paper (2024)",
+            points: [
+              "Built Natural Language Processing pipelines to discover political bias patterns",
+              "Developed a hybrid LLM and probabilistic topic modeling method to process data.",
+              "Primary author and presenter of paper to 150+ PhDs and Profs at Capstone Seminar, Southern California & Natl. Conference for Undergraduate Research."
+            ],
+            conferences: [
+              { name: "Southern California Conference for Undergraduate Research" },
+              { name: "National Conference for Undergraduate Research" }
+            ],
+            pdf: "https://drive.google.com/file/d/1GFTb06Cli-zebC9mqf0JB5hW-D-pU2EU/view?usp=sharing"
           },
           {
             title: "Knowledge-Augmented Retrieval for QA",
             venue: "Poster (2023)",
-            summary: "Improving answer accuracy by augmenting retrieval with constrained knowledge sources.",
-            pdf: "#",
-            image: "assets/notebook-text.png"
+            points: [
+              "Improving answer accuracy by augmenting retrieval with constrained knowledge sources."
+            ],
+            pdf: "#"
           }
         ];
 
@@ -220,12 +228,16 @@
             const list = document.createElement('ul');
             r.conferences.forEach(c => {
               const li = document.createElement('li');
-              const a = document.createElement('a');
-              a.href = c.url;
-              a.target = '_blank';
-              a.rel = 'noopener noreferrer';
-              a.textContent = c.name;
-              li.appendChild(a);
+              if(c.url){
+                const a = document.createElement('a');
+                a.href = c.url;
+                a.target = '_blank';
+                a.rel = 'noopener noreferrer';
+                a.textContent = c.name;
+                li.appendChild(a);
+              } else {
+                li.textContent = c.name;
+              }
               list.appendChild(li);
             });
             conf.appendChild(list);
