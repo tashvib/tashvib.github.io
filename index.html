@@ -170,7 +170,7 @@
             ]
           },
           {
-            title: "Analyzing Media Narratives with Machine Learning: Topic Alignment and Sentiment in Trump’s Rally Speeches and News Media Coverage",
+            title: "Analyzing Media Narratives with Machine Learning: Topic Alignment and Sentiment in Rally Speeches and News Media Coverage",
             venue: "Paper (2024)",
             points: [
               "Built Natural Language Processing pipelines to discover political bias patterns",
@@ -181,15 +181,17 @@
               { name: "Southern California Conference for Undergraduate Research" },
               { name: "National Conference for Undergraduate Research" }
             ],
-            pdf: "https://drive.google.com/file/d/1GFTb06Cli-zebC9mqf0JB5hW-D-pU2EU/view?usp=sharing"
+            pdf: "https://drive.google.com/file/d/1-46Ep7oWloXVb9eyrHY4FGZORyh-WCLt/view?usp=sharing"
           },
           {
-            title: "Knowledge-Augmented Retrieval for QA",
-            venue: "Poster (2023)",
+            title: "Counterfactual Loss Improves Feature-Token Transformer Performance in Community Homelessness Prediction",
+            venue: "Paper (2024)",
             points: [
-              "Improving answer accuracy by augmenting retrieval with constrained knowledge sources."
+              "Built an improved machine learning model that predicts homelessness rates across U.S. communities with 85% accuracy",
+              "Identified which community factors (housing costs, job availability, social services) have the biggest impact on homelessness to help guide more efficient government spending"
             ],
-            pdf: "#"
+            poster: "https://docs.google.com/presentation/d/1sH1uCYneM2FHOw3DITIsagd2ubruiLCXc8imiBe4tEo/edit?usp=sharing",
+            pdf: "https://drive.google.com/file/d/1pxGPWxUAHrLOtAsLrvLUJMcptFZYDSG_/view?usp=sharing"
           }
         ];
 
@@ -218,7 +220,7 @@
           }
 
           // conferences block (if present)
-          if(r.conferences && r.conferences.length){
+          if(r.conferences){
             const conf = document.createElement('div');
             conf.className = 'research-conferences';
             const title = document.createElement('div');
@@ -226,20 +228,22 @@
             title.textContent = 'Conferences:';
             conf.appendChild(title);
             const list = document.createElement('ul');
-            r.conferences.forEach(c => {
-              const li = document.createElement('li');
-              if(c.url){
-                const a = document.createElement('a');
-                a.href = c.url;
-                a.target = '_blank';
-                a.rel = 'noopener noreferrer';
-                a.textContent = c.name;
-                li.appendChild(a);
-              } else {
-                li.textContent = c.name;
-              }
-              list.appendChild(li);
-            });
+            if(r.conferences.length){
+              r.conferences.forEach(c => {
+                const li = document.createElement('li');
+                if(c.url){
+                  const a = document.createElement('a');
+                  a.href = c.url;
+                  a.target = '_blank';
+                  a.rel = 'noopener noreferrer';
+                  a.textContent = c.name;
+                  li.appendChild(a);
+                } else {
+                  li.textContent = c.name;
+                }
+                list.appendChild(li);
+              });
+            }
             conf.appendChild(list);
             card.querySelector('.research-content').appendChild(conf);
           }
@@ -254,7 +258,15 @@
             a.rel = 'noopener noreferrer';
             links.appendChild(a);
           }
-
+          if(r.poster){
+            const b = document.createElement('a');
+            b.className = 'link-btn poster-btn';
+            b.textContent = 'View Poster';
+            b.href = r.poster;
+            b.target = '_blank';
+            b.rel = 'noopener noreferrer';
+            links.appendChild(b);
+          }
           container.appendChild(card);
         }
 
