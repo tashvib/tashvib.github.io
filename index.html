@@ -23,7 +23,6 @@
       <nav>
         <a class="nav-btn" href="#about" title="About"><img src="res/house.png" alt="About"></a>
         <a class="nav-btn" href="#projects" title="Projects">💼</a>
-        <a class="nav-btn" href="#apps" title="Apps">📱</a>
         <a class="nav-btn" href="#research" title="Research">📄</a>
         <a class="nav-btn" href="#company" title="Company">🏢</a>
       </nav>
@@ -34,51 +33,118 @@
         <p class="lead">
         </p>
       </header>
-      <section id="about" class="card">
-        <h1></h1>
-        <h2></h2>
-        <p>
-          Hi, I’m Tashvi Bansal (Cupertino, CA), a Monta Vista High School senior who loves building and teaching with code. I coach students in Python at theCoderSchool, work with the Monta Vista Robotics Team, and volunteer at Sunnyview Retirement Residence. I’m also the CEO of SHELEAPS IN TECH INC, a 501(c)(3) nonprofit dedicated to dismantling barriers in tech education by providing girls and other underresourced students with high-quality learning experiences and low-cost tools they can use anywhere.
-        </p>
-        <p>Contact: <a href="mailto:tashvi.bansal@gmail.com">tashvi.bansal@gmail.com</a></p>
+      <section id="about" class="card about-hero section">
+        <div class="about-inner">
+          <div class="profile placeholder" aria-hidden="true"></div>
+          <div class="intro">
+            <h1 class="greeting">Hi, I'm <strong>Tashvi</strong></h1>
+            <div class="typing"><span id="typed-text">Monta Vista Student</span><span class="cursor">_</span></div>
+          </div>
+        </div>
       </section>
 
-      <section id="projects" class="card">
+      <section id="projects" class="card section">
         <h2>Projects</h2>
-        <div class="projects-grid">
-          <a class="project" href="https://github.com/tashvib/MurderOnEnchantedIsland" target="_blank" rel="noopener noreferrer">
-            <img src="assets/MurderOnEnchatedIslandHomePage.jpg" alt="Murder On Enchanted Island thumbnail">
-            <div class="proj-meta">
-              <strong>Murder On Enchanted Island</strong>
-            </div>
-          </a>
-
-          <a class="project" href="https://github.com/tashvib/GreenOvationCode_" target="_blank" rel="noopener noreferrer">
-            <img src="assets/GreenovationLendingPage.jpg" alt="GreenOvation thumbnail">
-            <div class="proj-meta">
-              <strong>GreenOvation</strong>
-            </div>
-          </a>
-        </div>
+        <div id="projects-list" class="projects-grid"></div>
       </section>
 
-      <section id="apps" class="card">
-        <h2>My Apps</h2>
-        <p>
-          Learn proper waste disposal through Al-powered recognition. Perfect for communities learning waste management basics and environmental education.
-        </p>
-        <div class="projects-grid">
-          <a class="project" href="https://apps.apple.com/us/app/greenovation/id6751117864" target="_blank" rel="noopener noreferrer">
-            <img src="assets/GreenovationLendingPage.jpg" alt="GreenOvation app thumbnail">
-            <div class="proj-meta">
-              <strong>GreenOvation (App Store)</strong>
-              <div><a href="https://apps.apple.com/us/app/greenovation/id6751117864" target="_blank" rel="noopener noreferrer">View on the App Store</a></div>
-            </div>
-          </a>
-        </div>
-      </section>
+      <script>
+        // Project list data — include optional fields (github, appStore, playStore, demo)
+        const projects = [
+          {
+            name: "Murder On Enchanted Island",
+            description: "A multi-genre adventure game built entirely from scratch.",
+            image: "assets/MurderOnEnchatedIslandHomePage.jpg",
+            github: "https://github.com/tashvib/MurderOnEnchantedIsland"
+          },
+          {
+            name: "GreenOvation",
+            description: "Waste-sorting app that teaches proper waste disposal.",
+            image: "assets/GreenovationLendingPage.jpg",
+            github: "https://github.com/tashvib/GreenOvationCode_",
+            appStore: "https://apps.apple.com/us/app/greenovation/id6751117864",
+            devpost: "https://devpost.com/software/greenovation-h7d4v8"
+          }
+        ];
 
-      <section id="research" class="card">
+        function svgGitHub(){
+          return `<!-- GitHub -->
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M12 .5C5.73.5.5 5.73.5 12c0 5.08 3.29 9.38 7.86 10.9.58.1.79-.25.79-.56 0-.28-.01-1.02-.01-2-3.2.7-3.88-1.37-3.88-1.37-.53-1.34-1.3-1.7-1.3-1.7-1.06-.72.08-.71.08-.71 1.17.08 1.79 1.2 1.79 1.2 1.04 1.78 2.72 1.27 3.38.97.1-.76.41-1.27.75-1.56-2.56-.29-5.26-1.28-5.26-5.7 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.79 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.82 1.19 1.84 1.19 3.1 0 4.43-2.7 5.4-5.27 5.69.42.36.8 1.09.8 2.2 0 1.59-.01 2.87-.01 3.26 0 .31.21.67.8.56C20.71 21.38 24 17.08 24 12c0-6.27-5.23-11.5-12-11.5z"></path>
+            </svg>`;
+        }
+
+        function svgApple(){
+          return `<!-- Apple -->
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M16.365 1.43c-.7.82-1.66 1.66-2.8 1.46-.36-.07-.69-.23-1.05-.35-1.02-.36-2.15 0-2.85.85-.64.78-.66 1.9-.1 2.83.45.73 1.45 1.19 2.36 1.07.54-.07 1.06-.28 1.56-.45.36-.12.69-.1 1.03.03.5.19.95.54 1.45.77.56.27 1.18.31 1.76.1.55-.2 1.04-.6 1.49-.97 1.1-1.01 1.89-2.38 1.93-3.99.03-1.1-.47-2.1-1.15-2.83-.6-.64-1.39-1.06-2.29-1.21-.56-.1-1.13-.07-1.69.06zM17.5 15.5c-.7.35-1.48.53-2.28.5-1.01-.03-1.98-.31-2.88-.78-.72-.36-1.3-.88-1.93-1.44-.8-.76-1.76-1.63-2.58-2.5-.5-.52-.98-1.06-1.4-1.66-.21-.3-.38-.63-.56-.96-.49-.93-.88-1.92-.97-2.95C2.5 3.63 3.46 3 4.5 3c.27 0 .54.02.79.06.21.04.42.11.61.21.08.04.16.08.24.12.68.38 1.27.94 1.66 1.65.66 1.2 1.1 2.5 1.6 3.77.38.94.77 1.87 1.34 2.72.44.65.98 1.23 1.66 1.66.58.36 1.3.47 1.98.32.72-.16 1.39-.49 2.02-.86.6-.35 1.16-.7 1.68-1.11.35-.28.68-.59.98-.93.28-.32.54-.66.78-1.02.08-.12.14-.2.2-.29.16-.25.28-.5.4-.78.2-.57.28-1.15.2-1.73-.08-.6-.32-1.16-.67-1.65-.6-.98-1.6-1.69-2.64-2.05-.68-.24-1.4-.29-2.05-.09-.42.12-.79.36-1.12.6-.19.15-.35.32-.5.49-.4.43-.85.8-1.35 1.08-1.1.62-2.36.62-3.54.02-.7-.38-1.3-.95-1.8-1.61C3 6.37 2 7.28 1.57 8.48c-.4 1.13-.4 2.29 0 3.43.4 1.13 1.18 2.14 2.2 2.77.96.58 2.06.76 3.12.5 1.23-.29 2.37-.95 3.32-1.84.36-.36.69-.76.98-1.18.28-.4.52-.82.77-1.23.25-.42.56-.77.98-1.06.44-.3.96-.44 1.49-.4.71.06 1.37.41 1.86.96.52.58.86 1.3.99 2.06.07.44.05.89-.05 1.32-.06.28-.15.57-.3.82-.16.27-.35.52-.57.75-.23.24-.5.45-.79.62z"/>
+            </svg>`;
+        }
+
+        function createProjectCard(p){
+          const container = document.getElementById('projects-list');
+          const card = document.createElement('article');
+          card.className = 'project-card';
+
+          card.innerHTML = `
+            <div class="project-image"><img src="${p.image}" alt="${p.name}"></div>
+            <div class="project-content">
+              <h3 class="project-title">${p.name}</h3>
+              <p class="project-description">${p.description || ''}</p>
+              <div class="project-links"></div>
+            </div>
+          `;
+
+          // buttons
+          const links = card.querySelector('.project-links');
+          if(p.github){
+            const btn = document.createElement('button');
+            btn.className = 'link-btn github-btn';
+            btn.title = `${p.name} — GitHub`;
+            btn.innerHTML = svgGitHub();
+            btn.addEventListener('click', ()=>window.open(p.github,'_blank'));
+            links.appendChild(btn);
+          }
+          if(p.appStore){
+            const btn = document.createElement('button');
+            btn.className = 'link-btn apple-btn';
+            btn.title = `${p.name} — App Store`;
+            // use local app store image if available, fallback to inline SVG
+            const img = document.createElement('img');
+            img.src = p.appStoreLogo || 'assets/appstore_logo.png';
+            img.alt = 'App Store';
+            img.className = 'store-icon';
+            btn.appendChild(img);
+            btn.addEventListener('click', ()=>window.open(p.appStore,'_blank'));
+            links.appendChild(btn);
+          }
+          if(p.demo){
+            const btn = document.createElement('button');
+            btn.className = 'link-btn demo-btn';
+            btn.textContent = 'Live Demo';
+            btn.addEventListener('click', ()=>window.open(p.demo,'_blank'));
+            links.appendChild(btn);
+          }
+          if(p.devpost){
+            const btn = document.createElement('button');
+            btn.className = 'link-btn devpost-btn';
+            btn.title = `${p.name} — Devpost`;
+            btn.textContent = 'Devpost';
+            btn.addEventListener('click', ()=>window.open(p.devpost,'_blank'));
+            links.appendChild(btn);
+          }
+
+          container.appendChild(card);
+        }
+
+        // render all
+        document.addEventListener('DOMContentLoaded', ()=>{
+          projects.forEach(createProjectCard);
+        });
+      </script>
+
+
+      <section id="research" class="card section">
         <h2>Research</h2>
         <p>
           Research: Co-author of “Follow My Lead: Logical Fallacy Classification with Knowledge-Augmented LLMs” (arXiv, 2025), exploring stepwise/knowledge-augmented methods to improve logical fallacy classification in LLMs. 2510.09970v1
@@ -86,7 +152,7 @@
         <p><a href="https://arxiv.org/pdf/2510.09970" target="_blank" rel="noopener noreferrer">Read the paper (arXiv)</a></p>
       </section>
 
-      <section id="company" class="card">
+      <section id="company" class="card section">
         <h2>Company</h2>
         <p>
           SHELEAPS IN TECH INC, a 501(c)(3) nonprofit, dismantles barriers in tech education by providing girls and other underresourced students with high-quality learning experiences and low-cost tools they can use anywhere.
@@ -103,6 +169,78 @@
 
     <script>
       document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+
+    <!-- Typewriter rotating text for About section -->
+    <script>
+      (function(){
+        const phrases = ["Monta Vista Student","Developer","Researcher"];
+        const typed = document.getElementById('typed-text');
+        const TYPING_SPEED = 150; // ms per character
+        const DELETING_SPEED = 75; // ms per character
+        const PAUSE = 4000; // ms pause when phrase fully typed
+        let phraseIndex = 0;
+        let charIndex = 0;
+        let mode = 'typing';
+
+        function tick(){
+          const current = phrases[phraseIndex];
+          if(mode === 'typing'){
+            if(charIndex < current.length){
+              typed.textContent += current.charAt(charIndex);
+              charIndex++;
+              setTimeout(tick, TYPING_SPEED);
+            } else {
+              // finished typing, pause then start deleting
+              setTimeout(()=>{ mode = 'deleting'; setTimeout(tick, DELETING_SPEED); }, PAUSE);
+            }
+          } else if(mode === 'deleting'){
+            if(charIndex > 0){
+              typed.textContent = current.substring(0, charIndex-1);
+              charIndex--;
+              setTimeout(tick, DELETING_SPEED);
+            } else {
+              // move to next phrase
+              phraseIndex = (phraseIndex + 1) % phrases.length;
+              mode = 'typing';
+              setTimeout(tick, TYPING_SPEED);
+            }
+          }
+        }
+
+        document.addEventListener('DOMContentLoaded', function(){
+          if(typed) typed.textContent = '';
+          setTimeout(tick, TYPING_SPEED);
+        });
+      })();
+    </script>
+
+    <!-- Section toggle script -->
+    <script>
+      (function(){
+        const navBtns = document.querySelectorAll('.left-nav .nav-btn');
+        const sections = document.querySelectorAll('.section');
+        function showSection(id){
+          sections.forEach(s => {
+            if(s.id === id) s.classList.add('active'); else s.classList.remove('active');
+          });
+          navBtns.forEach(btn => {
+            const href = btn.getAttribute('href') || btn.querySelector('a')?.getAttribute('href');
+            if(href && href.slice(1) === id) btn.classList.add('active'); else btn.classList.remove('active');
+          });
+        }
+        document.addEventListener('DOMContentLoaded', function(){
+          // show about by default
+          showSection('about');
+          navBtns.forEach(btn => {
+            btn.addEventListener('click', function(e){
+              e.preventDefault();
+              const target = this.getAttribute('href')?.slice(1);
+              if(target) showSection(target);
+            });
+          });
+        });
+      })();
     </script>
   </body>
 </html>
