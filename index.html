@@ -41,7 +41,7 @@
           <p class="typing" aria-label="Computer Engineering student, researcher, developer">
             <span id="typed-text">Computer Engineering @ Georgia Tech</span><span class="cursor" aria-hidden="true">|</span>
           </p>
-          <p class="about-me">First-year Georgia Tech Computer Engineering student seeking a Summer 2027 internship in AI/ML hardware acceleration, digital design, or explainable AI. Brings experience in Large Language Model (LLM) reasoning research, neurosymbolic AI, SystemVerilog design, and iOS development, with strengths in technical communication and collaborative research. Co-authored research paper on LLM faithfulness and presented it at Advances in Cognitive Systems at Georgia Tech. Launched an award-winning iOS app.</p>
+          <p class="about-me">First-year Georgia Tech Computer Engineering student seeking a Summer 2027 internship in AI/ML hardware acceleration, digital design, or explainable AI. Brings experience in Large Language Model (LLM) reasoning research, neurosymbolic AI, SystemVerilog design, and iOS development, with strengths in technical communication and collaborative research. Co-authored research paper on LLM faithfulness and presented it at Advances in Cognitive Systems at Georgia Tech.</p>
 
           <ul class="focus-tags" aria-label="Focus areas">
             <li>LLM reasoning</li>
@@ -100,7 +100,7 @@
       // Content — edit these arrays to update the site.
       // ---------------------------------------------------------------
 
-      // Projects — optional link fields: github, appStore, devpost, demo, website
+      // Projects — optional link fields: github, devpost, demo, website
       const projects = [
         {
           name: "Murder On Enchanted Island",
@@ -110,7 +110,7 @@
         },
         {
           name: "GreenOvation",
-          description: "An award-winning iOS app that gamifies waste disposal and sustainability education. Available on mobile as \"Zero Waste Hero.\"",
+          description: "An award-winning iOS app that gamifies waste disposal and sustainability education.",
           image: "assets/GreenovationLendingPage.jpg",
           github: "https://github.com/tashvib/GreenOvationCode_",
           devpost: "https://devpost.com/software/greenovation-h7d4v8"
@@ -223,7 +223,6 @@
 
           const links = el('div', 'link-row');
           if(p.github) links.appendChild(linkBtn('GitHub', p.github, 'is-dark'));
-          if(p.appStore) links.appendChild(linkBtn('App Store', p.appStore));
           if(p.devpost) links.appendChild(linkBtn('Devpost', p.devpost));
           if(p.demo) links.appendChild(linkBtn('Live demo', p.demo));
           if(p.website || p.url) links.appendChild(linkBtn('Website', p.website || p.url));
