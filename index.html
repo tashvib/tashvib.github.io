@@ -61,7 +61,6 @@
         <div class="wrap">
           <div class="section-head">
             <h2>Projects</h2>
-            <p class="section-sub">Things I've designed, built and shipped.</p>
           </div>
           <div id="projects-list" class="projects-grid"></div>
         </div>
@@ -125,6 +124,18 @@
 
       // Research — optional fields: points, conferences, pdf, poster
       const research = [
+        {
+          title: "Know Your Limits: On the Faithfulness of LLMs as Solvers and Autoformalizers in Legal Reasoning",
+          venue: "ICML Workshops · 2026",
+          points: [
+            "Co-authored \u201cKnow Your Limits: On the Faithfulness of LLMs as Solvers and Autoformalizers in Legal Reasoning\u201d; Paper accepted to the AI4Law and AI for Math Workshops at ICML 2026",
+            "Compared 3 reasoning methods (pure LLM classification, LLM-based formal reasoning, and Z3 solver-based formal reasoning) to discover \u201cscope laundering\u201d across all 5 LLMs tested; rates were 15.3% in GPT and 52.5% in Qwen"
+          ],
+          conferences: [
+            { name: "AI4Law Workshop at ICML 2026" },
+            { name: "AI for Math Workshop at ICML 2026" }
+          ]
+        },
         {
           title: "Follow My Lead: Logical Fallacy Classification with Knowledge-Augmented LLMs",
           venue: "arXiv · 2025",
