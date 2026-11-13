@@ -179,6 +179,19 @@ h1, h2, h3{line-height:1.2; margin:0}
 .project-card:hover .project-image img{transform:scale(1.03)}
 .project-body{display:flex; flex-direction:column; flex:1; padding:20px 22px 22px}
 
+.project-image--text{
+  display:flex; align-items:center; justify-content:center;
+  background:linear-gradient(135deg, var(--accent-soft), var(--gold-soft)), var(--surface-2);
+}
+.project-mono{font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size:24px; font-weight:600; color:var(--accent)}
+.tech-line{margin:6px 0 0; font-size:13px; font-weight:500; color:var(--accent)}
+.card-org{margin:4px 0 0; color:var(--text); font-weight:500; font-size:15px}
+
+/* skills */
+.skills-grid{display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:20px}
+.skill-tags{margin:14px 0 0}
+.skill-tags li{background:var(--surface-2)}
+
 /* research */
 .stack{display:flex; flex-direction:column; gap:20px}
 .research-card{padding:26px 28px}
@@ -234,5 +247,5 @@ h1, h2, h3{line-height:1.2; margin:0}
   .hero{padding:48px 0 48px}
   .section{padding:52px 0}
   .research-card, .community-card{padding:20px}
-  .projects-grid, .community-grid{grid-template-columns:1fr}
+  .projects-grid, .community-grid, .skills-grid{grid-template-columns:1fr}
 }
