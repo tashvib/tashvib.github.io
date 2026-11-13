@@ -26,9 +26,11 @@
         <a class="brand" href="#about">Tashvi Bansal</a>
         <nav class="site-nav" aria-label="Sections">
           <a href="#about">About</a>
+          <a href="#experience">Experience</a>
           <a href="#projects">Projects</a>
           <a href="#research">Research</a>
           <a href="#community">Community</a>
+          <a href="#skills">Skills</a>
         </nav>
       </div>
     </header>
@@ -41,19 +43,32 @@
           <p class="typing" aria-label="Computer Engineering student, researcher, developer">
             <span id="typed-text">Computer Engineering @ Georgia Tech</span><span class="cursor" aria-hidden="true">|</span>
           </p>
-          <p class="about-me">First-year Georgia Tech Computer Engineering student seeking a Summer 2027 internship in AI/ML hardware acceleration, digital design, or explainable AI. Brings experience in Large Language Model (LLM) reasoning research, neurosymbolic AI, SystemVerilog design, and iOS development, with strengths in technical communication and collaborative research. Co-authored research paper on LLM faithfulness and presented it at Advances in Cognitive Systems at Georgia Tech.</p>
+          <p class="about-me">First-year Georgia Tech Computer Engineering student seeking a Summer 2027 internship in AI/ML hardware acceleration, digital design, or explainable AI. Brings experience in Large Language Model (LLM) reasoning research, neurosymbolic AI, SystemVerilog design, and iOS development, with strengths in technical communication and collaborative research. Co-authored a paper on LLM faithfulness in legal reasoning, accepted to the AI4Law and AI for Math workshops at ICML 2026, and presented neurosymbolic AI research at Advances in Cognitive Systems at Georgia Tech.</p>
 
           <ul class="focus-tags" aria-label="Focus areas">
             <li>LLM reasoning</li>
             <li>Neurosymbolic AI</li>
+            <li>RISC-V &amp; RTL design</li>
             <li>SystemVerilog</li>
             <li>iOS development</li>
           </ul>
 
           <div class="hero-actions">
             <a class="btn btn-primary" href="#projects">See my work</a>
+            <a class="btn btn-ghost" href="assets/Tashvi_Bansal_Resume.pdf" target="_blank" rel="noopener noreferrer">Resume</a>
+            <a class="btn btn-ghost" href="https://www.linkedin.com/in/tashvi-bansal-b1ab52267" target="_blank" rel="noopener noreferrer">LinkedIn</a>
             <a class="btn btn-ghost" href="https://github.com/tashvib" target="_blank" rel="noopener noreferrer">GitHub</a>
           </div>
+        </div>
+      </section>
+
+      <section id="experience" class="section">
+        <div class="wrap">
+          <div class="section-head">
+            <h2>Experience</h2>
+            <p class="section-sub">Research labs and engineering teams I've worked with.</p>
+          </div>
+          <div id="experience-list" class="stack"></div>
         </div>
       </section>
 
@@ -86,6 +101,16 @@
           <div id="community-list" class="community-grid"></div>
         </div>
       </section>
+
+      <section id="skills" class="section">
+        <div class="wrap">
+          <div class="section-head">
+            <h2>Skills</h2>
+            <p class="section-sub">Languages, hardware and tools I work with.</p>
+          </div>
+          <div id="skills-list" class="skills-grid"></div>
+        </div>
+      </section>
     </main>
 
     <footer class="site-footer">
@@ -100,8 +125,53 @@
       // Content — edit these arrays to update the site.
       // ---------------------------------------------------------------
 
-      // Projects — optional link fields: github, devpost, demo, website
+      // Experience
+      const experience = [
+        {
+          role: "Research Intern: LLM Reliability & Formal Reasoning",
+          org: "AIEA Lab, UC Santa Cruz · Prof. Leilani Gilpin",
+          dates: "Feb 2026 – May 2026",
+          location: "Santa Cruz, CA",
+          points: [
+            "Co-authored \u201cKnow Your Limits: On the Faithfulness of LLMs as Solvers and Autoformalizers in Legal Reasoning\u201d; accepted to the AI4Law and AI for Math Workshops at ICML 2026.",
+            "Exposed a critical gap between LLM accuracy and logical reliability by benchmarking 3 reasoning approaches across 5 LLMs; identified \u201cscope laundering\u201d in all 5 models, with rates from 15.3% (GPT) to 52.5% (Qwen).",
+            "Achieved a 19.9% improvement in Claude\u2019s legal entailment accuracy using first-order logic reasoning."
+          ]
+        },
+        {
+          role: "Research Intern: Neuro-Symbolic AI",
+          org: "AIEA Lab, UC Santa Cruz · Prof. Leilani Gilpin",
+          dates: "June 2025 – Oct 2025",
+          location: "Santa Cruz, CA",
+          points: [
+            "Co-authored \u201cFollow My Lead: Logical Fallacy Classification with Knowledge-Augmented LLMs.\u201d",
+            "Improved LLM accuracy in classifying logical fallacies by 20.7% with a neurosymbolic approach using Prolog-based relational graphs and stepwise instructions, without expensive model training.",
+            "Built and evaluated AWS Bedrock Knowledge Bases for retrieval-augmented reasoning.",
+            "Presented at the 2025 Advances in Cognitive Systems Conference at Georgia Tech and the 2025 Bay Area Machine Learning Symposium at Santa Clara University."
+          ]
+        },
+        {
+          role: "Software Engineer",
+          org: "Monta Vista Robotics Team (MVRT)",
+          dates: "June 2023 – Mar 2026",
+          location: "Cupertino, CA",
+          tech: "Java · CTRE Phoenix 6 · WPILib · SolidWorks · CAN bus",
+          points: [
+            "Programmed Java state-machine logic with WPILib to control robot intake modes from real-time sensor feedback; implemented game-piece intake using limit switches and PID control.",
+            "Co-designed a dual-roller intake with game-piece detection sensors in SolidWorks, using belts and gears to drive counter-rotating rollers; intakes game pieces in under 6 seconds and competed in 4 matches.",
+            "Programmed the outreach page for MVRT\u2019s official website using HTML, CSS, JavaScript, Bootstrap, and jQuery."
+          ]
+        }
+      ];
+
+      // Projects — optional fields: image, tech, github, devpost, demo, website
       const projects = [
+        {
+          name: "RISC-V CPU",
+          description: "A RISC-V CPU designed in SystemVerilog and taken from RTL through verification to a physical chip layout. Verified with directed and constrained-random tests, assertions and scoreboarding, catching all 3 intentionally injected hardware bugs through waveform analysis.",
+          tech: "SystemVerilog · Cadence Xcelium · Innovus · Synopsys DC",
+          dates: "Aug 2026 – Present"
+        },
         {
           name: "Murder On Enchanted Island",
           description: "A multi-genre adventure game built entirely from scratch.",
@@ -110,7 +180,8 @@
         },
         {
           name: "GreenOvation",
-          description: "An award-winning iOS app that gamifies waste disposal and sustainability education.",
+          description: "An iOS sustainability app using Inception v3 and YOLO computer vision models for waste classification and carbon-impact analysis, with a Firebase backend and 100+ users. Won Most Creative Hack at PoweringSTEMHacks2 and 3rd place in the Congressional App Challenge (OR-06).",
+          tech: "Swift · Firebase · CoreML · YOLOv3",
           image: "assets/GreenovationLendingPage.jpg",
           github: "https://github.com/tashvib/GreenOvationCode_",
           devpost: "https://devpost.com/software/greenovation-h7d4v8"
@@ -119,6 +190,16 @@
 
       // Research — optional fields: points, conferences, pdf, poster
       const research = [
+        {
+          title: "Know Your Limits: On the Faithfulness of LLMs as Solvers and Autoformalizers in Legal Reasoning",
+          venue: "ICML 2026 Workshops · AI4Law & AI for Math",
+          points: [
+            "Co-authored paper accepted to the AI4Law and AI for Math Workshops at ICML 2026.",
+            "Benchmarked 3 reasoning approaches across 5 LLMs, exposing a gap between accuracy and logical reliability.",
+            "Identified \u201cscope laundering\u201d in all 5 models, with rates from 15.3% (GPT) to 52.5% (Qwen).",
+            "Improved Claude\u2019s legal entailment accuracy by 19.9% using first-order logic reasoning."
+          ]
+        },
         {
           title: "Follow My Lead: Logical Fallacy Classification with Knowledge-Augmented LLMs",
           venue: "arXiv · 2025",
@@ -131,7 +212,7 @@
           ],
           conferences: [
             { name: "Advances in Cognitive Systems at Georgia Tech", url: "http://cogsys.org/conference/2025/schedule.html" },
-            { name: "BayLearn Machine Learning Symposium", url: "https://baylearn-org.github.io/www/submissions.html" }
+            { name: "Bay Area Machine Learning Symposium (BayLearn) at Santa Clara University", url: "https://baylearn-org.github.io/www/submissions.html" }
           ]
         },
         {
@@ -180,6 +261,14 @@
         }
       ];
 
+      // Skills
+      const skills = [
+        { group: "Languages", items: ["C++", "Java", "Python", "JavaScript", "HTML", "CSS", "Swift", "SystemVerilog", "Prolog"] },
+        { group: "Hardware", items: ["RTL Design", "FPGA Design", "RISC-V", "CAN Bus", "Synthesis", "Static Timing Analysis"] },
+        { group: "Frameworks & Libraries", items: ["Bootstrap", "jQuery", "SwiftUI", "UIKit", "CoreML", "Firebase", "WPILib"] },
+        { group: "Tools", items: ["AWS Bedrock", "Git", "GitHub", "Z3", "Cadence Xcelium", "SimVision", "IMC", "Innovus", "Synopsys Design Compiler", "AMD Vivado"] }
+      ];
+
       // ---------------------------------------------------------------
       // Rendering
       // ---------------------------------------------------------------
@@ -204,15 +293,23 @@
         const container = document.getElementById('projects-list');
         projects.forEach(p => {
           const card = el('article', 'card project-card reveal');
-          const media = el('div', 'project-image');
-          const img = document.createElement('img');
-          img.src = p.image;
-          img.alt = p.name + ' screenshot';
-          img.loading = 'lazy';
-          media.appendChild(img);
+          let media;
+          if(p.image){
+            media = el('div', 'project-image');
+            const img = document.createElement('img');
+            img.src = p.image;
+            img.alt = p.name + ' screenshot';
+            img.loading = 'lazy';
+            media.appendChild(img);
+          } else {
+            media = el('div', 'project-image project-image--text');
+            media.appendChild(el('span', 'project-mono')).textContent = p.name;
+          }
 
           const body = el('div', 'project-body');
+          if(p.dates) body.appendChild(el('div', 'eyebrow')).textContent = p.dates;
           body.appendChild(el('h3', 'card-title', p.name));
+          if(p.tech) body.appendChild(el('p', 'tech-line')).textContent = p.tech;
           body.appendChild(el('p', 'card-text', p.description || ''));
 
           const links = el('div', 'link-row');
@@ -286,9 +383,38 @@
         });
       }
 
+      function renderExperience(){
+        const container = document.getElementById('experience-list');
+        experience.forEach(x => {
+          const card = el('article', 'card research-card reveal');
+          card.appendChild(el('div', 'eyebrow')).textContent = x.dates + ' · ' + x.location;
+          card.appendChild(el('h3', 'card-title')).textContent = x.role;
+          card.appendChild(el('p', 'card-org')).textContent = x.org;
+          if(x.tech) card.appendChild(el('p', 'tech-line')).textContent = x.tech;
+          const ul = el('ul', 'points');
+          x.points.forEach(pt => { ul.appendChild(el('li')).textContent = pt; });
+          card.appendChild(ul);
+          container.appendChild(card);
+        });
+      }
+
+      function renderSkills(){
+        const container = document.getElementById('skills-list');
+        skills.forEach(s => {
+          const card = el('article', 'card community-card reveal');
+          card.appendChild(el('h3', 'card-title')).textContent = s.group;
+          const ul = el('ul', 'focus-tags skill-tags');
+          s.items.forEach(i => { ul.appendChild(el('li')).textContent = i; });
+          card.appendChild(ul);
+          container.appendChild(card);
+        });
+      }
+
+      renderExperience();
       renderProjects();
       renderResearch();
       renderCommunity();
+      renderSkills();
       document.getElementById('year').textContent = new Date().getFullYear();
     </script>
 
